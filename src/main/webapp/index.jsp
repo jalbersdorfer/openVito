@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/openv.css" media="screen" />
 <html>
 <body>
 <div id="header">
@@ -10,12 +11,13 @@
 			content
 		</div>
 		<div class="col2">
-			<ul>
-				<li><a>Dashboard</a></li>
-				<li><a>Diagramme</a></li>
-				<li><a>Tag- Nacht Zeiten</a></li>
-				<li>-divider-</li>
-				<li><a>Einstellungen</a></li>
+			<ul class="button">
+				<li><a href="#" class="button"><span class="orange">Dashboard</span></a></li>
+				<li><a href="#" class="button"><span class="black">Diagramme</span></a></li>
+				<li><a href="#" class="button"><span class="blue">Tag- Nacht Zeiten</span></a></li>
+				<li><a href="#" class="button"><span class="white">Delete this bookmark</span></a></li>
+				<li></li>
+				<li><a href="#" class="button"><span class="black2">Einstellungen</span></a></li>
 			</ul>
 		</div>
 	</div>

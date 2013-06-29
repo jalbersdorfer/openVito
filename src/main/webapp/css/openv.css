@@ -1,0 +1,55 @@
+.button-link {
+    padding: 10px 5px;
+    background: #fff;
+    color: #000;
+}
+
+ul.button{
+	list-style: none;
+}
+
+a.button{
+background: #fff;
+display: block;
+color: #000;
+height: 32px;
+line-height: 32px;
+margin-bottom: 1px;
+text-decoration: none;
+width: 300px;
+font-family:'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+font-size: 24px;
+font-weight: 100;
+letter-spacing: 1px;
+}
+
+
+a:hover.button{
+background:#eee;
+}
+
+.orange{
+background:url(../gfx/ios-sun-orange-ico.png) no-repeat 5px 0px;
+text-indent:45px;
+display:block;
+}
+.black{
+background:url(../gfx/ios-sun-black-ico.png) no-repeat 5px 0px;
+text-indent:45px;
+display:block;
+}
+.blue{
+background:url(../gfx/ios-sun-blue-ico.png) no-repeat 5px 0px;
+text-indent:45px;
+display:block;
+}
+.white{
+background:url(../gfx/sun_white-ico.png) no-repeat 5px 0px;
+text-indent:45px;
+display:block;
+}
+.black2{
+background:url(../gfx/sun_black-ico.png) no-repeat 5px 0px;
+text-indent:45px;
+display:block;
+}
