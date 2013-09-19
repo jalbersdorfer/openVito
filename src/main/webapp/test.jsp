@@ -16,6 +16,18 @@
 					url : "temp.jsp",
 					success : function(data) {
 						eval("document.forms.namedItem('tForm').tElement").value = data;
+						var canvas = eval("document.getElementById('fg')");
+						var context = canvas.getContext('2d');
+						context.fillStyle = 'black';
+						context.fillRect(270, 200, 210, 120);
+						context.lineWidth = 5;
+						context.strokeStyle = 'white';
+						context.stroke();
+						context.fillStyle = 'white';
+						context.fill();
+
+						context.font = '65pt Helvetica';
+						context.fillText(data + ' °C', 270, 300);
 					},
 					dataType : "text",
 					complete : poll,
@@ -25,9 +37,20 @@
 </script>
 </head>
 <body>
-	<canvas id="myCanvas" width="640" height="960"></canvas>
+	<p>
+	<form name="tForm" action="">
+		<span>The temp is:</span>
+		<input type="text" name="tElement" readonly="readonly" size="30" value="<%=Fake.getTemp()%>" />
+		<input type="button" value="+" onclick="ajaxFun('tForm', 'tElement');" />
+	</form></p>
+	<div id="foodiv">??</div>
+
+	<div id="contain">
+	<canvas id="bg" width="640" height="960" style="position: absolute; z-index: 0"></canvas>
+	<canvas id="fg" width="640" height="960" style="position: absolute; z-index: 1"></canvas>
+	</div>
 	<script>
-		var canvas = document.getElementById('myCanvas');
+		var canvas = document.getElementById('bg');
 		var context = canvas.getContext('2d');
 
 		context.fillStyle = "black";
@@ -44,8 +67,10 @@
 		context.lineTo(140, 90);
 		context.lineTo(300, 50);
 		context.closePath();
-
-
+	</script>
+	<script>
+		var canvas = document.getElementById('bg');
+		var context = canvas.getContext('2d');
 		context.lineWidth = 5;
 		context.strokeStyle = 'white';
 		context.stroke();
@@ -55,12 +80,6 @@
 		context.font = '65pt Helvetica';
 		context.fillText('<%=Fake.getTemp()%> °C', 270, 300);
 	</script>
-	<form name="tForm" action="">
-		<span>The temp is:</span> <input type="text" name="tElement"
-			readonly="readonly" size="30" value="<%=Fake.getTemp()%>" /> <input
-			type="button" value="+" onclick="ajaxFun('tForm', 'tElement');" />
-	</form>
-	<div id="foodiv">??</div>
 </body>
 </html>
 
