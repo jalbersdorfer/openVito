@@ -15,4 +15,6 @@ public interface VitoClient
      * @param value the Temperature in Grad Celsius.
      */
     public void setTemperatureM1(final Integer value);
+    
+    public String getKesseltemperatur();
 }

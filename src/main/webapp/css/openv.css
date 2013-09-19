@@ -54,6 +54,15 @@ text-indent:45px;
 display:block;
 }
 
+body { 
+	background-color:#000000;
+}
+#canvas {
+  width: 640px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
 i.ico {display:inline-block; width:16px; height: 16px; vertical-align: text-bottom; margin-right: 3px; border:none;}
 .ico.edit-offer, .context-menu-item.icon-edit-offer {background-image:url(../gfx/ios-sun-black-ico.png);}
 .btn { font-size:11px; height: 14px; padding: 4px 6px; border: 1px solid transparent; margin:0px; background-image:none; border-radius: 3px 3px 3px 3px; display:block; color:#333; box-shadow:none; line-height:auto }
