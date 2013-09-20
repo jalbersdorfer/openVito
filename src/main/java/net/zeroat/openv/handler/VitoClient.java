@@ -7,7 +7,7 @@ public interface VitoClient
      *
      * @return the Temperature.
      */
-    public Integer getTemperatureM1();
+    public String getTemperatureM1();
 
     /**
      * Sets the normal target Temperature for Circle M1.
@@ -15,6 +15,6 @@ public interface VitoClient
      * @param value the Temperature in Grad Celsius.
      */
     public void setTemperatureM1(final Integer value);
-    
+
     public String getKesseltemperatur();
 }

@@ -8,6 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 
+import net.zeroat.openv.utils.OutputConverter;
+
 /**
  * <b>Title:</b> VitoClient <br>
  * <b>Description:</b> This Class provides an Object Oriented Access to the vcontrol Deamon<br>
@@ -31,17 +33,17 @@ public final class ConcreteVitoClient implements VitoClient
         return INSTANCE;
     }
 
-    public Integer getTemperatureM1()
+    public String getTemperatureM1()
     {
-    	String s = queryRequest("getTempKTS");
-        return (null != s) ? Integer.parseInt(s, 16) : -1;
+    	String s = queryRequest("getTempRaumNorSollM1");
+        return OutputConverter.toLong(s).toString();
     }
-    
+
     public String getKesseltemperatur()
     {
     	String s = queryRequest("getTempKTS");
-    	Long l = Long.parseLong(s, 16);
-    	return s.equals("ERR") ? s : String.format("%.1f", l / 1000.0f);
+    	Long l = OutputConverter.toLong(s);
+    	return s.equals("ERR") ? s : String.format("%.1f", l / 10.0f);
     }
 
     public void setTemperatureM1(Integer value)
@@ -59,19 +61,18 @@ public final class ConcreteVitoClient implements VitoClient
 			socket = new Socket("raspberrypi", 3003);
 			PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
+
 			while (reader.ready())
 			{
 				reader.read(buf);
 				System.out.println(buf);
 			}
-			
+
 			writer.println("unit off");
-//			writer.println("getTempSTS");
 			writer.println(request);
-			
+
 			System.out.println(String.format("Reading for thread %s", Thread.currentThread().getName()));
-			
+
 			while (!reader.ready())
 			{
 				try {
@@ -81,10 +82,11 @@ public final class ConcreteVitoClient implements VitoClient
 					e.printStackTrace();
 				}
 			}
-			
+
 			while(reader.ready())
 			{
-				int buflen = reader.read(buf);
+				@SuppressWarnings("unused")
+                int buflen = reader.read(buf);
 				System.out.println(buf);
 				String s = new String(buf).replaceAll("[^0-9A-F]", "");
 				try {
@@ -101,7 +103,7 @@ public final class ConcreteVitoClient implements VitoClient
 					e.printStackTrace();
 				}
 			}
-			
+
 			socket.close();
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -121,7 +123,7 @@ public final class ConcreteVitoClient implements VitoClient
 				} catch (IOException e) {
 				}
 		}
-		
+
 		return "ERR";
 	}
 }
